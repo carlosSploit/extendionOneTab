@@ -1,0 +1,37 @@
+.Contenedor_actions_url_tabs {
+    width: 24px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.Container_actions_close_item {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-color: #9C5EF2;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.Contenedor_actions_url_tabs:last-child {
+    margin-bottom: 0px;
+}
+
+.Contenedor_actions_url_tabs>.url_tabs {
+    width: 14px;
+    height: 14px;
+    background-color: blue;
+    margin-bottom: 4px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

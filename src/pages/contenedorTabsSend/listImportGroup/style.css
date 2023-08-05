@@ -1,0 +1,120 @@
+.container_tabs_search {
+    height: auto;
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.container_listImporG_back_icons {
+    font-size: 14px;
+    color: white;
+}
+
+.component_listImporG_body_item {
+    background-color: transparent;
+    height: auto;
+    min-height: 24px;
+    /* width: 100%; */
+    min-width: 230px;
+    /* centrar el contenido */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    /* background-color: red; */
+}
+
+.component_listImporG_itemS_cont {
+    height: auto;
+    min-height: 30px;
+    width: calc(95% - 10px);
+    /* aling */
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    /*-------------------*/
+    border-radius: 12px;
+    background-color: rgba(217, 213, 242, 0.2);
+}
+
+.container_tabs_listGroupS_foot {
+    height: 40px;
+    background-color: #181429;
+    /* background-color: #181429; */
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.container_tabs_listGroupS_url {
+    height: 420px;
+    background-color: #181429;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    /* padding-top: 10px; */
+    padding-bottom: 10px;
+}
+
+.container_tabs_listGroupS_url_contV {
+    height: 420px;
+    background-color: #181429;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding-top: 10px; */
+    padding-bottom: 10px;
+}
+
+.container_tabs_listGroupS_url::-webkit-scrollbar {
+    width: 0px;
+    background-color: transparent;
+}
+
+.container_tabs_listGroupS_url::-webkit-scrollbar-thumb {
+    width: 0px;
+    background: linear-gradient(185deg, rgba(150, 134, 195, 1) 0%, rgba(150, 134, 195, 1) 36%, rgba(239, 203, 75, 1) 100%, rgba(105, 78, 78, 1) 120%);
+    border-radius: 20px;
+}
+
+.container_tabs_listGroupS_url_vacio {
+    width: 90%;
+    height: 95%;
+    border-radius: 15px;
+    border-color: rgba(255, 255, 255, 0.3);
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_tabs_listGroupS_url_vacio>div {
+    color: white;
+    font-size: 12px;
+}
+
+.container_tabs_listGroupS_subContent {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    /* background-color: green; */
+}

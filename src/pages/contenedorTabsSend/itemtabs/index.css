@@ -1,0 +1,17 @@
+.componet-colapse-footer {
+    width: 100%;
+    background-color: red;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+}
+
+.componet-colapse-footer-bott {
+    width: 100%;
+    height: 100%;
+    background-color: #28273A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}

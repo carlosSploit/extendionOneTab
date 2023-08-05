@@ -1,0 +1,24 @@
+.Contenedor_actions_url_tabs {
+    width: 24px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.Contenedor_actions_url_tabs:last-child {
+    margin-bottom: 0px;
+}
+
+.Contenedor_actions_url_tabs>.url_tabs {
+    width: 14px;
+    height: 14px;
+    background-color: blue;
+    margin-bottom: 4px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

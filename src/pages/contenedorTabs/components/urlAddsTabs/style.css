@@ -1,0 +1,15 @@
+.container_tabs_formulari {
+    height: auto;
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    /* background-color: red; */
+}
+
+.container_tabs_formulari_tabs {
+    height: auto;
+    width: 100%;
+}

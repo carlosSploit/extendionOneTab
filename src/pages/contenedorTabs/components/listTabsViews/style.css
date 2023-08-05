@@ -1,0 +1,31 @@
+.container_tabs_bottons {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_tabs_search {
+    height: auto;
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.container_tabs_back_icons {
+    font-size: 14px;
+    color: #181429;
+}
+
+.container_tabs_add_icons {
+    font-size: 14px;
+    color: white;
+}
