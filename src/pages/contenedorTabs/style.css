@@ -41,23 +41,6 @@
     position: relative;
 }
 
-.container_tabs_back {
-    height: 24px;
-    width: 24px;
-    /* background-color: red; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 18px;
-    right: 5px;
-}
-
-.container_tabs_back_icons {
-    font-size: 14px;
-    color: #181429;
-}
-
 .container_tabs_listItems {
     height: 420px;
     width: 100%;

@@ -30,8 +30,8 @@ export function ComponentItemSecion(props){
                         oncollapset(!stateOcult);
                     }} className="component_collaps_header_actioncolap">
                         {(!stateOcult)?
-                            <DownOutlined className="component_collaps_header_icon" />:
-                            <UpOutlined className="component_collaps_header_icon" />
+                            <DownOutlined className="component_collaps_header_icon2" />:
+                            <UpOutlined className="component_collaps_header_icon2" />
                         }
                     </div> */}
                     <div style={{width:"10px"}} />

@@ -15,6 +15,7 @@ const userSlice = createSlice({
       state.selected.push(action.payload);
     },
     addGroupImport: (state, action) => {
+      console.log(action.payload)
       state.groups.push(action.payload);
     },
     isContainerSelectEnable: (state,) => {
@@ -22,6 +23,11 @@ const userSlice = createSlice({
     },
     isContainerSelectDisable: (state,) => {
       state.status = "isDisable";
+    },
+    deleteSelectGroupImport: (state, action) => {
+      let foundTask = state.groups.filter((task) => task.igG != action.payload);
+      if (!Array.isArray(foundTask)) foundTask = {}
+      state.groups = foundTask;
     },
     deleteSelectGroup: (state, action) => {
       let foundTask = state.selected.filter((task) => task.igG != action.payload);
@@ -35,5 +41,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { addSelectGroup, addGroupImport, deleteSelectGroup, isContainerSelectEnable, isContainerSelectDisable, deleteAllSelectGroup } = userSlice.actions;
+export const { addSelectGroup, addGroupImport, deleteSelectGroup, deleteSelectGroupImport, isContainerSelectEnable, isContainerSelectDisable, deleteAllSelectGroup } = userSlice.actions;
 export default userSlice.reducer;

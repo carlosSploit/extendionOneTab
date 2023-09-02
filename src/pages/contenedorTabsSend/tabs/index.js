@@ -1,3 +1,4 @@
+/*global chrome*/
 import { InfoOutlined, CloseOutlined } from "@ant-design/icons";
 import React, { useEffect, useRef } from "react";
 // import { ComponentcolapsetItem } from "../../../../components/colacetItem";
@@ -15,7 +16,8 @@ import { deleteUrlGroup } from "../../../redux/slice/negocio/urlSend";
 // import { deleteContentSession } from "../../../../../../../../../../../../service/repository/Contensesion";
 // import { EditContSession } from "../EditContSession/EditContSession";
 export function TabsItemsU(props){
-    const {dataac={
+    const {
+        dataac={
             active: false,
             audible: false,
             favIconUrl: "https://res.cloudinary.com/dhxefh3r2/image/upload/v1689703655/zo3smzqslh5bm3idmrml.ico",
@@ -34,7 +36,9 @@ export function TabsItemsU(props){
             url: "https://m.inei.gob.pe/prensa/noticias/poblacion-ocupada-del-pais-alcanzo-los-17-millones-120-mil-personas-en-el-ano-2021-13492/#:~:text=El%20INEI%20inform%C3%B3%20que%20el,activamente%20empleo%20en%20el%20pa%C3%ADs.",
             width: 1920,
             windowId: 679377625
-        }} = props;
+        },
+        onClickActionTabs = (Tabs = {idTab:'', idT: '', idG:'', historUrl:''})=>{console.log(Tabs)}
+    } = props;
     // const refeditcont = useRef();
     // const refviewtarea = useRef();
     const UrlData = useSelector(state => state.group.posts)
@@ -44,7 +48,7 @@ export function TabsItemsU(props){
 
 
     useEffect(()=>{
-        console.log()
+        console.log(dataac)
         // evitar que las palabras grandes interfieran con el texto
     },[])
 
@@ -64,11 +68,17 @@ export function TabsItemsU(props){
     return (
         <>
             <div>
-                <ComponentcolapsetItem id={dataac.id} isSelector={false} urlIcon={`${dataac.favIconUrl}`} onChange={(id, stade)=>{
+                <ComponentcolapsetItem id={dataac.id} isSelector={false} urlIcon={`${dataac.favIconUrl}`} onChange={async (id, stade)=>{
                     // refviewtarea.current.click();
-                    const win = window.open(dataac.url, '_blank');
+                    // Se crea el tabs y luego se intenta tener un registro del tab ingresado
+                    const data = await chrome.tabs.create(
+                        { url:  dataac.url, selected: false,active: false },
+                        (tab)=>{
+                            onClickActionTabs({idTab: tab.id, idG: dataac.idG, idT: dataac.id, historUrl:dataac.historUrl})
+                        }
+                    )
                     // Cambiar el foco al nuevo tab (punto opcional)
-                    win.focus();
+                    // win.focus();
                 }} label={dataac.title.replaceAll("_"," ").replaceAll("-"," ")} url={recorUrl(dataac.url)} >
                     <div className="Contenedor_actions_url_tabs">
                         <div className="url_tabs" style={{backgroundColor: '#9C5EF2'}}>

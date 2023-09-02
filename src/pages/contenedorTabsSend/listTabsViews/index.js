@@ -1,4 +1,3 @@
-// import { RightOutlined } from "@ant-design/icons";
 // import { Componentsearch } from "../../../../components/searchImput";
 // import { ItemsTabs } from "../itemtabs";
 // import { useEffect, useState } from "react";
@@ -17,6 +16,7 @@ import { ItemsGroups } from "../itemtabs";
 // import { DetectedPosition } from "../../../components/detectedposition";
 // import { TabsItemsCards } from "../../contenedorTabs/components/tabs/Card";
 import { ListImportGroup } from "../listImportGroup";
+import { getMemoriA, importMemActAndUrlSend } from "../../../bd/memoriActualize";
 // import { TabsItemsU } from "../tabs";
 
 export function ListUrlViews(props) {
@@ -62,6 +62,18 @@ export function ListUrlViews(props) {
                     setlistcontsess(UrlData)
                 },500)
             }
+        })();
+        // en caso que aya una incercion o eliminacion, se dara una recarga de los datos de manera automatica
+    },[UrlState,UrlData])
+
+    // se intenta dar una actualizacion de los tabs por primera vez
+    useEffect(()=>{
+        // console.log(UrlData)
+        (async ()=>{
+            const listData = await getMemoriA()
+            // if (listData.length > 0){
+            //     await importMemActAndUrlSend()
+            // }
         })();
         // en caso que aya una incercion o eliminacion, se dara una recarga de los datos de manera automatica
     },[UrlState,UrlData])

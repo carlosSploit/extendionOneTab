@@ -44,6 +44,7 @@ export function ItemGroupSelected(props){
                     <div onClick={()=>{
                         // const dataPyload = {idGroup: dataac.idG, idUrlGroup: dataac.id, state: UrlData}
                         // dispatch(deleteUrlGroup(dataPyload));
+                        onDelect();
                     }} className="Container_actions_close_item">
                         <CloseOutlined style={{color: "#9C5EF2", fontSize: "8px"}} />
                     </div>

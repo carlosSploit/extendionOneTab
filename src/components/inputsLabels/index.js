@@ -24,6 +24,7 @@ export function Forminput(props){
     onError=()=>{},
     valueInit= "",
     placeHolder = "name",
+    isTotalContent = false,
     Limitchar = 999,
     onValitador=(textinput)=>{
         if(textinput === "") onError();
@@ -47,8 +48,8 @@ export function Forminput(props){
 
     return (
         <>
-            <div style={{height: "5px"}}/>
-            <div className="form_conteiner">    
+            {/* <div style={{height: "5px"}}/> */}
+            <div className="form_conteiner" style={(isTotalContent)?{width: `100%`, marginLeft: '0px', marginRight: '0px'}:{width: `95%`, marginLeft: '20px', marginRight: '20px'}} > 
                 <div className="form_input_conteiner"
                     style={{
                         borderColor:`${(!valuestade)?"#181426":"#f44336"}`

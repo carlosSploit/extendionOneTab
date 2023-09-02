@@ -3,6 +3,12 @@
   "name": "OneTap",
   "version": "1.0",
   "manifest_version": 3,
+  "cross_origin_embedder_policy": {
+    "value": "require-corp"
+  },
+  "cross_origin_opener_policy": {
+    "value": "same-origin"
+  },
   "action": {
     "default_title": "OneTap",
     "default_popup": "index.html",
@@ -11,10 +17,28 @@
       "128": "logo192.png"
     }
   },
+  "host_permissions": [
+    "https://*/*"
+  ],
   "permissions": [
     "storage",
     "tabs",
     "tabGroups",
-    "activeTab"
-  ]
+    "activeTab",
+    "scripting"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "dataAcces/memoriAcces.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
 }

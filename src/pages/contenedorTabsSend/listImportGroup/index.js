@@ -1,6 +1,6 @@
 import { DetectedPosition } from "../../../components/detectedposition";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAllSelectGroup, isContainerSelectDisable, isContainerSelectEnable } from "../../../redux/slice/internal/selecteGroup";
+import { deleteAllSelectGroup, deleteSelectGroupImport, isContainerSelectDisable, isContainerSelectEnable } from "../../../redux/slice/internal/selecteGroup";
 import { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -11,6 +11,7 @@ import { importGrou } from "../../../redux/slice/negocio/urlSend";
 import { RightOutlined } from "@ant-design/icons";
 import "./style.css";
 import { ItemGroupSelected } from "./components/Card";
+import { v4 as uuidv4} from 'uuid';
 
 export function ListImportGroup(props){
     
@@ -40,7 +41,13 @@ export function ListImportGroup(props){
     const importarGrupo = ()=>{
         const listData = [...listGroupSelected]
         if (listGroupSelected.length <= 0) return
-        const dataPyload = {listdataGroup: listData, state: UrlData}
+        const newListData = listData.map((item)=>{
+            const dataB = {...item}
+            const v4Id = uuidv4();
+            dataB['igG'] = v4Id
+            return dataB
+        })
+        const dataPyload = {listdataGroup: newListData, state: UrlData}
         dispatch(importGrou(dataPyload));
         dispatch(deleteAllSelectGroup());
     }
@@ -91,6 +98,9 @@ export function ListImportGroup(props){
                             url: `El grupo presenta ${item.tabsItems.length} links`,
                             width: 0,
                             windowId: 0
+                        }} onDelect={()=>{
+                            console.log(listGroupSel)
+                            dispatch(deleteSelectGroupImport(item.igG));
                         }} /> 
                     }):<></>}
                     {(SelectGroup.selected != null)?

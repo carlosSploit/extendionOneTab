@@ -110,6 +110,13 @@ export function ComponentCardItemUrl(props){
             label="Primer item de process",
             url="",
             onChange=()=>{}} = props;
+
+    useEffect(()=>{
+        (()=>{
+            console.log(urlIcon)
+        })();
+    },[])
+
     return (
         <div className="component_collaps_body_item">
             <div className="component_collaps_body_content_card">

@@ -5,6 +5,7 @@ import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { Componentcolapset, ComponentcolapsetBody, ComponentcolapsetHeader } from "../../../components/colacetItem";
 import { TabsItemsU } from "../tabs";
 import { ComponentItemSecionActions } from "../../../components/colaceItemSecion";
+import { addMemoriAUrlCallBack, getMemoriA, isInserTabsUrl } from "../../../bd/memoriActualize";
 // import { Componentcolapset, ComponentcolapsetBody, ComponentcolapsetHeader } from "../../../../components/colacetItem";
 
 export function ItemsGroups(props) {
@@ -39,35 +40,28 @@ export function ItemsGroups(props) {
                 <ComponentItemSecionActions onClickActions={()=>{
                     isElimGroupInfo(true,data.igG)
                 }} Icont={DeleteOutlined} />
-                {/* 
-                <ComponentItemSecionActions onClickActions={async () => {
-                    await eliminaritem();
-                    setTimeout(() => {
-                        (async ()=>{
-                            await onClickActions();
-                        })();
-                    }, 500);
-                }} Icont={DeleteOutlined}/>
-                <div style={{width:"5px"}} /> */}
             </ComponentcolapsetHeader>
             <ComponentcolapsetBody stateOcult={iscollapset}>
                 <div style={{height:"10px"}}/>
                 {
                     (listcontsess != null)?
                     listcontsess.map((item)=>{
-                        return <TabsItemsU dataac={item} />;
+                        return <TabsItemsU 
+                            dataac={item} 
+                            onClickActionTabs = { async (tab)=>{
+                                console.log(tab)
+                                const isInsert = await isInserTabsUrl({idT: tab.idT, idTab: 0})
+                                if (!isInsert) {
+                                    await addMemoriAUrlCallBack(tab)
+                                }
+                                const listData = await getMemoriA()
+                                console.log(listData)
+                            }}
+                        />;
                     })
                     :<></>
                 }
                 <div style={{height:"10px"}}/>
-                {/* <div className="componet-colapse-footer">
-                    <div className="componet-colapse-footer-bott"
-                        onClick={()=>{
-                        }}
-                    >
-                        Agregar un Contenido
-                    </div>
-                </div> */}
             </ComponentcolapsetBody>
         </Componentcolapset>
     )

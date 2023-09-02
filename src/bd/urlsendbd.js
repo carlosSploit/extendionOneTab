@@ -1,8 +1,12 @@
+import { CODE_MEMORI } from "../Config/varials";
+
 /*global chrome*/
 export const addInsert = async (data=[]) => {
     console.log(data)
+    const formatData = {}
+    formatData[CODE_MEMORI] = JSON.stringify(data)
     try {
-        await chrome.storage.local.set({ urlData: JSON.stringify(data) });
+        await chrome.storage.local.set(formatData);
         return true;
     } catch (error) {
         console.log("error: ",error)
@@ -10,9 +14,12 @@ export const addInsert = async (data=[]) => {
 }
 
 export const getUrl = async () => {
-    const data = await chrome.storage.local.get(['urlData']);
-    console.log(data)
-    if (data != undefined) return JSON.parse(data.urlData)
+    const data = await chrome.storage.local.get([CODE_MEMORI]);
+    if (data != undefined){
+        const dataList = JSON.parse(data.urlData)
+        console.log(dataList)
+        return dataList
+    }
     return []
 }
 
@@ -43,6 +50,7 @@ export const eliminarGroup = async (data, payload) => {
 const formatGroup = (infoGroups = []) => {
     const newinfoGroups = infoGroups.map((item)=>{
         const groupinfo = {...item}
+        // groupinfo['igG'] = 
         const listUrl = groupinfo.tabsItems
         const auxListUrl = listUrl.map((item)=>{
             return {

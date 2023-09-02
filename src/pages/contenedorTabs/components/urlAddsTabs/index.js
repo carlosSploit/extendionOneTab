@@ -1,4 +1,4 @@
-import { RightOutlined } from "@ant-design/icons";
+import { FacebookFilled, FolderAddOutlined, RightOutlined, ScanOutlined } from "@ant-design/icons";
 import { Forminput, ForminputBotton, ForminputComboBox } from "../../../../components/inputsLabels";
 import { TabsItemsCards } from "../tabs/Card";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,8 @@ export function UrlAddsTabs(props) {
     const tabsState = useSelector(state => state.tabs)
     // deteccion de grupos existentes
     const [idGroup, setidGroup] = useState(27384932);
+    const [textUrlLoad, setTextUrlLoad] = useState('');
+    const [urlLoad, setUrlLoad] = useState(null);
     const [listGroup, setListGroup] = useState([
         {id:0,label:"Generico"}
     ]);
@@ -37,8 +39,19 @@ export function UrlAddsTabs(props) {
         onClosetab(false);
     }
 
+    const onAddUrlGroupLoader = () => {
+        const dataPyload = {idGroup: idGroup, listUrl: [urlLoad], state: UrlData}
+        dispatch(addUrlGroup(dataPyload));
+        onClosetab(false);
+    }
+
+
     const loadDataScrupp = async () => {
-       const result = await getDataFromWebPag()
+        console.log('Ingresando a insertar')
+        const result = await getDataFromWebPag(textUrlLoad)
+        console.log(result)
+        setUrlLoad(result)
+        // const dataPyload = {idGroup: idGroup, listUrl: [], state: UrlData}
     }
 
     return (<div className="container_tabs">
@@ -58,8 +71,32 @@ export function UrlAddsTabs(props) {
                         setidGroup(json.value);
                     }} ></ForminputComboBox>
                     {(listTabsSelected.length == 0)?<>
-                        <Forminput></Forminput>
+                        <div className="container_tabs_formulari_inputs_urlLoad">
+                            <div className="container_tabs_formulari_inputs_urlLoad_inputL">
+                                <Forminput
+                                    placeHolder = {'Ingresa el url a escanear....'}
+                                    isTotalContent = {true}
+                                    textinput = {textUrlLoad}
+                                    settextinput = {setTextUrlLoad}
+                                />
+                            </div>
+                            <div className="container_tabs_formulari_inputs_urlLoad_BottonL">
+                                <div onClick={ async ()=>{
+                                    await loadDataScrupp();
+                                }} className="container_tabs_formulari_inputs_urlLoad_BottonL_A">
+                                    <ScanOutlined className="container_tabs_formulari_inputs_urlLoad_BottonL_icon" />
+                                </div>
+                            </div>
+                        </div>
+                        {/* <div style={{height:"5px"}}></div>
+                        <ForminputBotton isInvertColor={true} label={'Cargar URL'} onChange={async ()=>{
+                            
+                        }} ></ForminputBotton> */}
                         <div style={{height:"5px"}}></div>
+                        {(urlLoad != null)?
+                        <div className="container_tabs_formulari_tabs">
+                               <TabsItemsCards dataac={urlLoad} /> 
+                        </div>:((textUrlLoad == "")?<div className="container_tabs_load_prev">Presione en escanear</div>:<></>)}
                     </>:<>
                         <div style={{height:"5px"}}></div>
                         {listTabsSelected.map((item)=>{
@@ -71,7 +108,7 @@ export function UrlAddsTabs(props) {
                     <div style={{height:"5px"}}></div>
                     <ForminputBotton onChange={async ()=>{
                         if (listTabsSelected.length == 0){
-                            await loadDataScrupp();
+                            onAddUrlGroupLoader();
                         }else{
                             onAddUrlGroup()
                         }
